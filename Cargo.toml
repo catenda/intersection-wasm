@@ -28,4 +28,5 @@ wasm-bindgen-test = "0.2.48"
 
 [profile.release]
 lto = true
-opt-level = "s"
+panic = "abort"
+opt-level = 3
