@@ -69,7 +69,10 @@ pub fn no_div_tri_tri_isect(
     u1: &[f32],
     u2: &[f32],
 ) -> bool {
-    utils::set_panic_hook();
+    #[cfg(feature = "console_error_panic_hook")]
+    {
+        utils::set_panic_hook();
+    }
 
     let mut e1 = [0.; 3];
     let mut e2 = [0.; 3];
@@ -255,7 +258,10 @@ pub fn no_div_tri_tri_isect(
 
 #[wasm_bindgen(js_name = "meshMeshIsect")]
 pub fn mesh_mesh_isect(m1: &[f32], m2: &[f32]) -> bool {
-    utils::set_panic_hook();
+    #[cfg(feature = "console_error_panic_hook")]
+    {
+        utils::set_panic_hook();
+    }
 
     for tri1 in m1.chunks(9) {
         for tri2 in m2.chunks(9) {
