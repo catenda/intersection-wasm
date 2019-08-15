@@ -2,14 +2,16 @@
   <h1>
     <code>intersection-wasm</code>
   </h1>
-  <strong>Triangle-Triangle Overlap Test by Tomas Akenine-Möller.</strong><sup><a href="#article">[1]</a></sup>
+  <strong>Mesh-Mesh and Triangle-Triangle Intersection tests based on the algorithm by Tomas Akenine-Möller.</strong><sup><a href="#article">[1]</a></sup>
   
-<sub>Built with 🦀 <a href="https://www.rust-lang.org" target="_blank">Rust</a> and 🕸 <a href="https://webassembly.org" target="_blank">WebAssembly</a>.</sub>
+  <sub>Built with 🦀 <a href="https://www.rust-lang.org" target="_blank">Rust</a> and 🕸 <a href="https://webassembly.org" target="_blank">WebAssembly</a>.</sub>
+
+  [![GitHub version](https://badge.fury.io/gh/catenda%2Fintersection-wasm.svg)](https://badge.fury.io/gh/catenda%2Fintersection-wasm) [![npm version](https://badge.fury.io/js/intersection-wasm.svg)](https://badge.fury.io/js/intersection-wasm)
 </div>
 
 ## About
 
-Triangle/triangle and Mesh/mesh intersection test routines.
+Mesh-Mesh and Triangle-Triangle Intersection tests.
 
 ```typescript
 /**
@@ -24,6 +26,9 @@ const noDivTriTriIsect = (
   u0: [number, number, number],
   u1: [number, number, number],
   u2: [number, number, number],
+
+  // not used by default
+  epsilon?: number
 ): boolean => {...}
 
 /**
@@ -35,6 +40,8 @@ const meshMeshIsect => (
   m1: ArrayLike<number>,
   // m2.length should be divisible by 9
   m2: ArrayLike<number>,
+  // defaults to 0.000001
+  epsilon?: number
 ): boolean => {...}
 ```
 
@@ -59,13 +66,13 @@ Afterwards, import and use as follows:
 import * as intersection from 'intersection-wasm';
 
 intersection.noDivTriTriIsect(
-  [0.848311, 0.710340, 0.799546],
+  [0.848311, 0.71034, 0.799546],
   [0.921121, 0.519029, 0.950985],
   [0, 1.751, 0],
 
   [-0.5, 0.8755, 0.5],
   [0.5, 0.8755, 1.5],
-  [0.5, 0.8755, 0.5],
+  [0.5, 0.8755, 0.5]
 ); // ← false
 
 intersection.meshMeshIsect(
@@ -99,7 +106,8 @@ intersection.meshMeshIsect(
     -140.68576049804688,
     -174.72113037109375,
     -1.137430191040039
-  ])
+  ]),
+  0.0001
 ); // ← true
 ```
 

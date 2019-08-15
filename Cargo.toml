@@ -4,8 +4,12 @@ version = "1.0.0"
 authors = ["Bogdan Arabadzhi <bogdan.today@gmail.com>"]
 edition = "2018"
 
-description = "Rust and WASM implementation of the Triangle-Triangle Overlap Test by Tomas Akenine-Möller"
+description = "Mesh-Mesh and Triangle-Triangle Intersection tests based on the algorithm by Tomas Akenine-Möller"
+homepage = "https://github.com/catenda/intersection-wasm"
 repository = "https://github.com/catenda/intersection-wasm"
+readme = "README.md"
+keywords = ["3d", "mesh", "triangle", "intersect", "intersection", "collision", "collision-detection", "collide"]
+categories = ["algorithms", "science", "wasm"]
 license = "MIT"
 
 [lib]
