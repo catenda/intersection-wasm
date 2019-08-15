@@ -3175,7 +3175,7 @@ fn mesh_mesh_isect_separated() {
         -1.1074304580688477,
     ];
 
-    assert_eq!(mesh_mesh_isect(&m1, &m2), false);
+    assert_eq!(mesh_mesh_isect(&m1, &m2, None), false);
 }
 
 #[test]
@@ -3401,5 +3401,5 @@ fn mesh_mesh_isect_intersected() {
         0.5925700068473816,
     ];
 
-    assert_eq!(mesh_mesh_isect(&m1, &m2), true);
+    assert_eq!(mesh_mesh_isect(&m1, &m2, None), true);
 }

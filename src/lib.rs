@@ -6,12 +6,6 @@ mod utils;
 
 use wasm_bindgen::prelude::*;
 
-// if USE_EPSILON_TEST is true then we do a check:
-//     if |dv| < EPSILON then dv = 0.0;
-// else no check is done (which is less robust)
-const USE_EPSILON_TEST: bool = true;
-const EPSILON: f32 = 0.000_001;
-
 #[allow(clippy::cognitive_complexity)]
 fn coplanar_tri_tri(
     n: [f32; 3],
@@ -68,6 +62,7 @@ pub fn no_div_tri_tri_isect(
     u0: &[f32],
     u1: &[f32],
     u2: &[f32],
+    epsilon: Option<f32>,
 ) -> bool {
     #[cfg(feature = "console_error_panic_hook")]
     {
@@ -128,14 +123,14 @@ pub fn no_div_tri_tri_isect(
     du2 = dot!(n1, u2) + d1;
 
     // coplanarity robustness check
-    if USE_EPSILON_TEST {
-        if du0.abs() < EPSILON {
+    if let Some(epsilon) = epsilon {
+        if du0.abs() < epsilon {
             du0 = 0.;
         }
-        if du1.abs() < EPSILON {
+        if du1.abs() < epsilon {
             du1 = 0.;
         }
-        if du2.abs() < EPSILON {
+        if du2.abs() < epsilon {
             du2 = 0.;
         }
     }
@@ -160,14 +155,14 @@ pub fn no_div_tri_tri_isect(
     dv1 = dot!(n2, v1) + d2;
     dv2 = dot!(n2, v2) + d2;
 
-    if USE_EPSILON_TEST {
-        if dv0.abs() < EPSILON {
+    if let Some(epsilon) = epsilon {
+        if dv0.abs() < epsilon {
             dv0 = 0.;
         }
-        if dv1.abs() < EPSILON {
+        if dv1.abs() < epsilon {
             dv1 = 0.;
         }
-        if dv2.abs() < EPSILON {
+        if dv2.abs() < epsilon {
             dv2 = 0.;
         }
     }
@@ -257,11 +252,13 @@ pub fn no_div_tri_tri_isect(
 }
 
 #[wasm_bindgen(js_name = "meshMeshIsect")]
-pub fn mesh_mesh_isect(m1: &[f32], m2: &[f32]) -> bool {
+pub fn mesh_mesh_isect(m1: &[f32], m2: &[f32], epsilon: Option<f32>) -> bool {
     #[cfg(feature = "console_error_panic_hook")]
     {
         utils::set_panic_hook();
     }
+
+    let epsilon = epsilon.unwrap_or(0.000_001);
 
     for tri1 in m1.chunks(9) {
         for tri2 in m2.chunks(9) {
@@ -272,6 +269,7 @@ pub fn mesh_mesh_isect(m1: &[f32], m2: &[f32]) -> bool {
                 &[tri2[0], tri2[1], tri2[2]],
                 &[tri2[3], tri2[4], tri2[5]],
                 &[tri2[6], tri2[7], tri2[8]],
+                Some(epsilon),
             ) {
                 return true;
             }
