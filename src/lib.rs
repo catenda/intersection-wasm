@@ -122,18 +122,7 @@ pub fn no_div_tri_tri_isect(
     du1 = dot!(n1, u1) + d1;
     du2 = dot!(n1, u2) + d1;
 
-    // coplanarity robustness check
-    if let Some(epsilon) = epsilon {
-        if du0.abs() < epsilon {
-            du0 = 0.;
-        }
-        if du1.abs() < epsilon {
-            du1 = 0.;
-        }
-        if du2.abs() < epsilon {
-            du2 = 0.;
-        }
-    }
+    check_coplanarity_robustness!(epsilon, du0, du1, du2);
 
     du0du1 = du0 * du1;
     du0du2 = du0 * du2;
@@ -155,17 +144,7 @@ pub fn no_div_tri_tri_isect(
     dv1 = dot!(n2, v1) + d2;
     dv2 = dot!(n2, v2) + d2;
 
-    if let Some(epsilon) = epsilon {
-        if dv0.abs() < epsilon {
-            dv0 = 0.;
-        }
-        if dv1.abs() < epsilon {
-            dv1 = 0.;
-        }
-        if dv2.abs() < epsilon {
-            dv2 = 0.;
-        }
-    }
+    check_coplanarity_robustness!(epsilon, dv0, dv1, dv2);
 
     dv0dv1 = dv0 * dv1;
     dv0dv2 = dv0 * dv2;

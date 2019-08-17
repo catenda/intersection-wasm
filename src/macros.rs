@@ -140,3 +140,19 @@ macro_rules! compute_intervals {
         }
     };
 }
+
+macro_rules! check_coplanarity_robustness {
+    ($epsilon:ident, $v0:ident, $v1:ident, $v2:ident) => {
+        if let Some(epsilon) = $epsilon {
+            if $v0.abs() < epsilon {
+                $v0 = 0.;
+            }
+            if $v1.abs() < epsilon {
+                $v1 = 0.;
+            }
+            if $v2.abs() < epsilon {
+                $v2 = 0.;
+            }
+        }
+    };
+}
