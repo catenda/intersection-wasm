@@ -6,7 +6,7 @@
   
   <sub>Built with 🦀 <a href="https://www.rust-lang.org" target="_blank">Rust</a> and 🕸 <a href="https://webassembly.org" target="_blank">WebAssembly</a>.</sub>
 
-  [![GitHub version](https://badge.fury.io/gh/catenda%2Fintersection-wasm.svg)](https://badge.fury.io/gh/catenda%2Fintersection-wasm) [![npm version](https://badge.fury.io/js/intersection-wasm.svg)](https://badge.fury.io/js/intersection-wasm)
+[![Build Status](https://travis-ci.org/catenda/intersection-wasm.svg?branch=master)](https://travis-ci.org/catenda/intersection-wasm) [![GitHub version](https://badge.fury.io/gh/catenda%2Fintersection-wasm.svg)](https://badge.fury.io/gh/catenda%2Fintersection-wasm) [![npm version](https://badge.fury.io/js/intersection-wasm.svg)](https://badge.fury.io/js/intersection-wasm)
 </div>
 
 ## About
