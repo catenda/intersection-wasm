@@ -19,7 +19,7 @@ crate-type = ["cdylib", "rlib"]
 default = []
 
 [dependencies]
-wasm-bindgen = "0.2.49"
+wasm-bindgen = "0.2.50"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
@@ -28,7 +28,7 @@ wasm-bindgen = "0.2.49"
 console_error_panic_hook = { version = "0.1.6", optional = true }
 
 [dev-dependencies]
-wasm-bindgen-test = "0.2.49"
+wasm-bindgen-test = "0.2.50"
 
 [profile.release]
 lto = true
