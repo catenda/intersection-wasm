@@ -220,8 +220,13 @@ pub fn no_div_tri_tri_isect(
     isect2[0] = tmp + e * xx * y1;
     isect2[1] = tmp + f * xx * y0;
 
-    isect1.swap(0, 1);
-    isect2.swap(0, 1);
+    if isect1[0] > isect1[1] {
+        isect1.swap(0, 1);
+    }
+
+    if isect2[0] > isect2[1] {
+        isect2.swap(0, 1);
+    }
 
     if isect1[1] < isect2[0] || isect2[1] < isect1[0] {
         return false;
