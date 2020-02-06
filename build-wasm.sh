@@ -18,7 +18,8 @@ wc -c pkg/intersection_wasm_bg.wasm
 # so might as well optimise for speed.
 # You might need to install wasm-opt from binaryen:
 # https://github.com/WebAssembly/binaryen/releases
-wasm-opt pkg/intersection_wasm_bg.wasm -O4 -o pkg/intersection_wasm_bg.wasm
+wasm-opt -O4 --strip-debug --strip-producers \
+pkg/intersection_wasm_bg.wasm -o pkg/intersection_wasm_bg.wasm
 
 echo "Size after wasm-opt"
 wc -c pkg/intersection_wasm_bg.wasm

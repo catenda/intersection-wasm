@@ -1,4 +1,4 @@
-Copyright (c) 2019 Bogdan Arabadzhi
+Copyright (c) 2019 - 2020 Bogdan Arabadzhi
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
