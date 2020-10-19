@@ -1,15 +1,15 @@
 {
   "name": "intersection-wasm-demo",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "start": "webpack serve --config webpack.config.js"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^5.1.1",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.3"
+    "copy-webpack-plugin": "^6.2.1",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }
